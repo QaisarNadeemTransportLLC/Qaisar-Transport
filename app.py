@@ -5,23 +5,31 @@ import streamlit_authenticator as stauth
 st.markdown("""
     <style>
     [data-testid="stSidebar"] { background-color: #1e1e2d; }
+    
+    /* Buttons ki styling */
     div.stButton > button {
-        width: 100%;
-        height: 50px;
+        width: 100% !important;
+        height: 55px !important;  /* Height fix */
         background-color: #2b2b40 !important;
-        color: white !important;
+        color: #ffffff !important;
         border: 1px solid #3d3d5c !important;
-        border-radius: 10px !important;
-        font-weight: bold !important;
-        margin-bottom: 8px !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+        font-size: 16px !important;
+        margin-bottom: 10px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
+    
+    /* Hover effect */
     div.stButton > button:hover {
         background-color: #ff9f43 !important;
+        color: white !important;
         border: 1px solid #ff9f43 !important;
     }
     </style>
 """, unsafe_allow_html=True)
-
 # --- AUTH CONFIG ---
 config = {
     'credentials': {'usernames': {
