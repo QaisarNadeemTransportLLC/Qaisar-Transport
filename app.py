@@ -1,20 +1,46 @@
 import streamlit as st
 import streamlit_authenticator as stauth
 
-# --- CSS FOR PROFESSIONAL LOOK ---
+# --- CUSTOM CSS FOR RICH PROFESSIONAL LOOK ---
 st.markdown("""
     <style>
-    /* Radio buttons ko button jaisa look dene ke liye */
+    /* Sidebar ka background color */
+    [data-testid="stSidebar"] {
+        background-color: #1e1e2d;
+    }
+    
+    /* Buttons ki styling - Rich Look */
     div[role="radiogroup"] > label {
-        background-color: #f0f2f6;
-        padding: 10px;
-        border-radius: 8px;
-        margin-bottom: 5px;
-        border: 1px solid #e0e0e0;
+        background-color: #2b2b40 !important;
+        color: #ffffff !important;
+        padding: 12px 20px !important;
+        border-radius: 12px !important;
+        margin-bottom: 10px !important;
+        border: 1px solid #3d3d5c !important;
+        transition: 0.3s !important;
+        font-weight: 600 !important;
+    }
+    
+    /* Hover effect - Jab mouse upar jaye */
+    div[role="radiogroup"] > label:hover {
+        background-color: #3d3d5c !important;
+        border: 1px solid #5d5d8c !important;
+        cursor: pointer;
+    }
+    
+    /* Active button ka color - Jo select ho */
+    div[role="radiogroup"] > label[data-checked="true"] {
+        background-color: #ff9f43 !important;
+        color: white !important;
+        border: 1px solid #ff9f43 !important;
+    }
+    
+    /* Text color aur Sidebar labels */
+    .stSidebar [data-testid="stText"], .stSidebar [data-testid="stMarkdown"] {
+        color: white !important;
     }
     </style>
 """, unsafe_allow_html=True)
-
 # --- CONFIGURATION ---
 config = {
     'credentials': {
