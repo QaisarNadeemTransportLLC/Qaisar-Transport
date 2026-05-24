@@ -8,7 +8,7 @@ st.markdown("""
     
     /* Buttons ki styling */
     div.stButton > button {
-        width: 130px !important;
+        width: 200px !important;
         height: 55px !important;  /* Height fix */
         background-color: #FF9559 !important;
         color: #ffffff !important;
