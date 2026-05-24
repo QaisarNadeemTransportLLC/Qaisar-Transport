@@ -10,7 +10,7 @@ st.markdown("""
     div.stButton > button {
         width: 230px !important;
         height: 55px !important;  /* Height fix */
-        background-color: #FF9559 !important;
+        background-color: #24388F !important;
         color: #ffffff !important;
         border: 1px solid #3d3d5c !important;
         border-radius: 8px !important;
