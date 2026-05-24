@@ -2,13 +2,30 @@ import streamlit as st
 import streamlit_authenticator as stauth
 
 # --- CONFIGURATION ---
-names = ['Qaisar Nadeem']
-usernames = ['qaisar']
-# Yeh wahi password 'admin123' ka hash hai
-hashed_passwords = ['$2b$12$R.S2.5fS05W7oQ.W.y17nOfp.9kXkP5bW0eXyR0C.N1F0uWJ6W89i']
+# Naye version ke mutabiq dictionary structure
+config = {
+    'credentials': {
+        'usernames': {
+            'qaisar': {
+                'name': 'Qaisar Nadeem',
+                'password': '$2b$12$R.S2.5fS05W7oQ.W.y17nOfp.9kXkP5bW0eXyR0C.N1F0uWJ6W89i'
+            }
+        }
+    },
+    'cookie': {
+        'name': 'qaisar_cookie',
+        'key': 'secret_key',
+        'expiry_days': 30
+    }
+}
 
-# Simple Authenticator Setup
-authenticator = stauth.Authenticate(names, usernames, hashed_passwords, 'qaisar_cookie', 'secret_key')
+# Authenticator setup
+authenticator = stauth.Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days']
+)
 
 # Login UI
 name, authentication_status, username = authenticator.login('Login', 'main')
