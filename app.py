@@ -4,25 +4,26 @@ import streamlit_authenticator as stauth
 # --- CUSTOM CSS FOR RICH PROFESSIONAL LOOK ---
 st.markdown("""
     <style>
-    /* Sidebar background */
-    [data-testid="stSidebar"] {
-        background-color: #1e1e2d;
+    /* Radio buttons ke gol circles (indicators) ko chhupa do */
+    div[role="radiogroup"] input[type="radio"] {
+        display: none;
     }
     
-    /* Buttons ki styling - Fixed width and uniform height */
+    /* Buttons ki styling */
     div[role="radiogroup"] > label {
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
         width: 100% !important;
-        height: 50px !important; /* Button height fix kar di */
+        height: 50px !important;
         background-color: #2b2b40 !important;
-        color: #ffffff !important; /* Text white */
+        color: #ffffff !important;
         font-weight: bold !important;
         border-radius: 10px !important;
         margin-bottom: 8px !important;
         border: 1px solid #3d3d5c !important;
         transition: 0.3s !important;
+        cursor: pointer;
     }
     
     /* Hover effect */
@@ -30,19 +31,21 @@ st.markdown("""
         background-color: #3d3d5c !important;
     }
     
-    /* Jo button select ho uska rang */
+    /* Select hone par active style */
     div[role="radiogroup"] > label[data-checked="true"] {
         background-color: #ff9f43 !important;
         color: white !important;
         border: 2px solid #ff9f43 !important;
     }
     
-    /* Sidebar header ka color */
-    .stSidebar [data-testid="stSidebarHeader"] {
-        color: white !important;
+    /* Sidebar ka background aur text */
+    [data-testid="stSidebar"] {
+        background-color: #1e1e2d;
     }
     </style>
-""", unsafe_allow_html=True)# --- CONFIGURATION ---
+""", unsafe_allow_html=True)
+
+# --- CONFIGURATION ---
 config = {
     'credentials': {
         'usernames': {
