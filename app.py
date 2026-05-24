@@ -2,33 +2,35 @@ import streamlit as st
 import streamlit_authenticator as stauth
 
 # --- CONFIGURATION ---
-# Yahan apne login details rakhein
 names = ['Qaisar Nadeem']
 usernames = ['qaisar']
-passwords = ['qaisar123'] # Apna password yahan change kar lein
+passwords = ['admin123']
 
-# Password hashing (New Method)
+# Hash passwords automatically for the library
 hashed_passwords = stauth.Hasher(passwords).generate()
 
-# Authentication setup
+# Authentication setup (Version 0.3.x compatible)
 authenticator = stauth.Authenticate(names, usernames, hashed_passwords,
     'qaisar_cookie', 'secret_key')
 
 # Login UI
-name, authentication_status, username = authenticator.login()
+name, authentication_status, username = authenticator.login('Login', 'main')
 
 if authentication_status:
-    # --- YAHAN SE AAPKA DASHBOARD SHURU HOGA ---
+    # --- DASHBOARD KA CODE YAHAN RAKHEIN ---
     st.title("Qaisar Nadeem Transport LLC")
-    st.write(f'Welcome back, {name}!')
+    st.sidebar.title(f"Welcome {name}")
     
-    # Aapka original dashboard code yahan aayega
-    col1, col2, col3 = st.columns(3)
-    col1.metric("Total Income", "AED 50,000")
-    col2.metric("Total Expenses", "AED 12,000")
-    col3.metric("Net Profit", "AED 38,000")
-    
-    authenticator.logout('Logout', 'main')
+    # Ye raha aapka Basic Info section
+    menu = ["Dashboard", "Basic Info"]
+    choice = st.sidebar.selectbox("Navigation", menu)
+
+    if choice == "Basic Info":
+        st.subheader("Add Driver and Vehicle Details")
+        st.write("Aapka form yahan aayega...")
+
+    if st.sidebar.button('Logout'):
+        authenticator.logout('Logout', 'main')
 
 elif authentication_status == False:
     st.error('Username/password is incorrect')
