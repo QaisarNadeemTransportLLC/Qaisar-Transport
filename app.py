@@ -38,8 +38,32 @@ if authentication_status:
     st.title("Qaisar Nadeem Transport LLC")
     st.sidebar.write(f"Welcome {name}")
     
-    # Navigation
-    choice = st.sidebar.selectbox("Navigation", ["Dashboard", "Basic Info"])
+    # Navigation Buttons (Sidebar mein)
+    st.sidebar.title("Navigation")
+    choice = st.sidebar.radio("Select Option", [
+        "Basic Info", 
+        "Labour Kharcha", 
+        "Maintenance", 
+        "New Bill", 
+        "Trips", 
+        "Print Trip", 
+        "Labour", 
+        "Coustomers", 
+        "Fines List"
+    ])
+
+    # Ab ye check karega ke aapne kaunsa button dabaya hai
+    if choice == "Basic Info":
+        st.subheader("Add Driver and Vehicle Details")
+        # Yahan aap apna form ka code dalenge...
+        
+    elif choice == "Labour Kharcha":
+        st.subheader("Labour Kharcha Section")
+        
+    elif choice == "Maintenance":
+        st.subheader("Maintenance Section")
+    
+    # Isi tarah baaki sections bhi ban jayenge...
     
     if choice == "Basic Info":
         st.subheader("Add Driver and Vehicle Details")
