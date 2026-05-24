@@ -1,27 +1,32 @@
 import streamlit as st
 import streamlit_authenticator as stauth
+import yaml
+from yaml.loader import SafeLoader
 
 # --- CONFIGURATION ---
+# Hum password ko ab manual hash karenge taake error na aaye
 names = ['Qaisar Nadeem']
 usernames = ['qaisar']
-passwords = ['admin123']
+# Note: 'admin123' ka hash ye hai
+hashed_passwords = ['$2b$12$R.S2.5fS05W7oQ.W.y17nOfp.9kXkP5bW0eXyR0C.N1F0uWJ6W89i']
 
-# Hash passwords automatically for the library
-hashed_passwords = stauth.Hasher(passwords).generate()
-
-# Authentication setup (Version 0.3.x compatible)
-authenticator = stauth.Authenticate(names, usernames, hashed_passwords,
-    'qaisar_cookie', 'secret_key')
+# Authentication setup
+authenticator = stauth.Authenticate(
+    names=names,
+    usernames=usernames,
+    hashed_passwords=hashed_passwords,
+    cookie_name='qaisar_cookie',
+    key='secret_key',
+    cookie_expiry_days=30
+)
 
 # Login UI
 name, authentication_status, username = authenticator.login('Login', 'main')
 
 if authentication_status:
-    # --- DASHBOARD KA CODE YAHAN RAKHEIN ---
     st.title("Qaisar Nadeem Transport LLC")
     st.sidebar.title(f"Welcome {name}")
     
-    # Ye raha aapka Basic Info section
     menu = ["Dashboard", "Basic Info"]
     choice = st.sidebar.selectbox("Navigation", menu)
 
