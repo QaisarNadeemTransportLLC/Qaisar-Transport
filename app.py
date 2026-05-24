@@ -2,13 +2,17 @@ import streamlit as st
 import streamlit_authenticator as stauth
 
 # --- CONFIGURATION ---
-# Naye version ke mutabiq dictionary structure
+# Yahan aap jitne marzi users add kar sakte hain
 config = {
     'credentials': {
         'usernames': {
+            'ehsan': {
+                'name': 'Ehsan Sohna Jatt',
+                'password': stauth.Hasher(['Ehsan123']).generate()[0]
+            },
             'qaisar': {
                 'name': 'Qaisar Nadeem',
-                'password': '$2b$12$R.S2.5fS05W7oQ.W.y17nOfp.9kXkP5bW0eXyR0C.N1F0uWJ6W89i'
+                'password': stauth.Hasher(['admin123']).generate()[0]
             }
         }
     },
