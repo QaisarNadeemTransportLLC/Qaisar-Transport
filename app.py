@@ -6,7 +6,7 @@ from yaml.loader import SafeLoader
 # Credentials ka setup (Yahan apna username/password set karein)
 names = ['Qaisar Nadeem']
 usernames = ['qaisar']
-passwords = ['admin123'] # Yahan apna password change kar lein
+passwords = ['qaisar123'] # Yahan apna password change kar lein
 
 hashed_passwords = stauth.Hasher(passwords).generate()
 
