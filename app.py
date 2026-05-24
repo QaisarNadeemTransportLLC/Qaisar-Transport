@@ -4,44 +4,45 @@ import streamlit_authenticator as stauth
 # --- CUSTOM CSS FOR RICH PROFESSIONAL LOOK ---
 st.markdown("""
     <style>
-    /* Sidebar ka background color */
+    /* Sidebar background */
     [data-testid="stSidebar"] {
         background-color: #1e1e2d;
     }
     
-    /* Buttons ki styling - Rich Look */
+    /* Buttons ki styling - Fixed width and uniform height */
     div[role="radiogroup"] > label {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        height: 50px !important; /* Button height fix kar di */
         background-color: #2b2b40 !important;
-        color: #ffffff !important;
-        padding: 12px 20px !important;
-        border-radius: 12px !important;
-        margin-bottom: 10px !important;
+        color: #ffffff !important; /* Text white */
+        font-weight: bold !important;
+        border-radius: 10px !important;
+        margin-bottom: 8px !important;
         border: 1px solid #3d3d5c !important;
         transition: 0.3s !important;
-        font-weight: 600 !important;
     }
     
-    /* Hover effect - Jab mouse upar jaye */
+    /* Hover effect */
     div[role="radiogroup"] > label:hover {
         background-color: #3d3d5c !important;
-        border: 1px solid #5d5d8c !important;
-        cursor: pointer;
     }
     
-    /* Active button ka color - Jo select ho */
+    /* Jo button select ho uska rang */
     div[role="radiogroup"] > label[data-checked="true"] {
         background-color: #ff9f43 !important;
         color: white !important;
-        border: 1px solid #ff9f43 !important;
+        border: 2px solid #ff9f43 !important;
     }
     
-    /* Text color aur Sidebar labels */
-    .stSidebar [data-testid="stText"], .stSidebar [data-testid="stMarkdown"] {
+    /* Sidebar header ka color */
+    .stSidebar [data-testid="stSidebarHeader"] {
         color: white !important;
     }
     </style>
-""", unsafe_allow_html=True)
-# --- CONFIGURATION ---
+""", unsafe_allow_html=True)# --- CONFIGURATION ---
 config = {
     'credentials': {
         'usernames': {
