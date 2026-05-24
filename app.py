@@ -1,15 +1,13 @@
 import streamlit as st
 import streamlit_authenticator as stauth
 
-# --- CUSTOM CSS FOR PREMIUM LOOK ---
+# --- CUSTOM CSS ---
 st.markdown("""
     <style>
     [data-testid="stSidebar"] { background-color: #FAF5F1; }
-    
-    /* Buttons ki styling */
     div.stButton > button {
         width: 230px !important;
-        height: 55px !important;  /* Height fix */
+        height: 55px !important;
         background-color: #24388F !important;
         color: #ffffff !important;
         border: 1px solid #3d3d5c !important;
@@ -21,8 +19,6 @@ st.markdown("""
         align-items: center !important;
         justify-content: center !important;
     }
-    
-    /* Hover effect */
     div.stButton > button:hover {
         background-color: #ff9f43 !important;
         color: white !important;
@@ -30,6 +26,7 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
+
 # --- AUTH CONFIG ---
 config = {
     'credentials': {'usernames': {
@@ -47,7 +44,6 @@ if authentication_status:
 
     st.sidebar.title(f"Welcome, {name}")
     
-    # Buttons
     if st.sidebar.button("Basic Info"): st.session_state.menu = "Basic Info"
     if st.sidebar.button("Labour Kharcha"): st.session_state.menu = "Labour Kharcha"
     if st.sidebar.button("Maintenance"): st.session_state.menu = "Maintenance"
@@ -59,9 +55,28 @@ if authentication_status:
     st.sidebar.markdown("---")
     if st.sidebar.button("Logout"): authenticator.logout("Logout", "main")
 
-    # Content
+    # --- MAIN CONTENT LOGIC ---
     st.title(st.session_state.menu)
-    st.write(f"Ab aap {st.session_state.menu} par kaam kar rahe hain.")
+
+    if st.session_state.menu == "Basic Info":
+        st.subheader("Add Driver and Vehicle Details")
+        with st.form("driver_vehicle_form"):
+            col1, col2 = st.columns(2)
+            with col1:
+                driver_name = st.text_input("Driver Name")
+                license_no = st.text_input("License Number")
+            with col2:
+                vehicle_plate = st.text_input("Plate Number")
+                model = st.text_input("Truck Model")
+            
+            if st.form_submit_button("Save Information"):
+                st.success(f"Record saved for {driver_name}!")
+
+    elif st.session_state.menu == "Labour Kharcha":
+        st.write("Labour kharche ki details yahan add karein...")
+    
+    else:
+        st.write(f"Abhi {st.session_state.menu} ka section under construction hai.")
 
 elif authentication_status == False:
     st.error('Username/password is incorrect')
