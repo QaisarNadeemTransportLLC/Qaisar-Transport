@@ -4,7 +4,7 @@ import streamlit_authenticator as stauth
 # --- CUSTOM CSS FOR PREMIUM LOOK ---
 st.markdown("""
     <style>
-    [data-testid="stSidebar"] { background-color: #1e1e2d; }
+    [data-testid="stSidebar"] { background-color: #FAF5F1; }
     
     /* Buttons ki styling */
     div.stButton > button {
