@@ -45,6 +45,8 @@ if authentication_status:
     if st.sidebar.button("Maintenance"): st.session_state.menu = "Maintenance"
     if st.sidebar.button("New Bill"): st.session_state.menu = "New Bill"
     if st.sidebar.button("Trips"): st.session_state.menu = "Trips"
+    if st.sidebar.button("Coustomer List"): st.session_state.menu = "Coustomer List"
+    if st.sidebar.button("Fines List"): st.session_state.menu = "Fines List"
     
     st.sidebar.markdown("---")
     if st.sidebar.button("Logout"): authenticator.logout("Logout", "main")
